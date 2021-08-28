@@ -144,6 +144,7 @@ a.mat-button {
   color:#777474;
   border-left: 0px;
   text-align: left !important;
+  border-radius: 0 !important;
 }
 
 .hamburger-search-icon{
@@ -176,7 +177,7 @@ a.mat-button {
   width: 28px;
   padding-left:2px;
   font-size: 18px;
-
+  border-radius: 0 !important;
 }
 input:focus{ 
   outline:none;

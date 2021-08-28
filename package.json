@@ -1,13 +1,13 @@
 {
-    "name": "spurtcommerce",
-    "version": "3.0.1",
+    "name": "noorfashion",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "aws-deploy": "aws s3 sync dist/store/ s3://noor-fashions"
     },
     "husky": {
         "hooks": {

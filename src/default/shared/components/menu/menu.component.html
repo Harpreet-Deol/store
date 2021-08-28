@@ -63,7 +63,7 @@
 <!-- Side-Navigation Hamburger -->
 <mat-sidenav-container fxFlexFill>
   <mat-sidenav #sidenav color="primary" fxLayout="column" mode="over" opened="false"
-    (close)="alert('hello'); setSideNavFlag('close')" fxHide.gt-sm="true">
+    (close)="setSideNavFlag('close')" fxHide.gt-sm="true">
     <div>
       <a mat-button  class="colorMenu lh la" (click)="toggle(sidenav); $event.stopPropagation()"
         routerLinkActive="horizontal-active-link" [routerLink]="['/products/', 'All']"
