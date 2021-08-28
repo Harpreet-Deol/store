@@ -1,0 +1,18 @@
+<mat-sidenav-container>
+    <mat-sidenav [opened]="false" mode="over" #sidenav class="sidenav mat-elevation-z6 fl">
+        <app-spurt-side-bar></app-spurt-side-bar>
+    </mat-sidenav>
+    <!--<mat-toolbar class="head-toolbar">
+         <app-spurt-header class="head"></app-spurt-header>
+    </mat-toolbar>-->
+    <mat-toolbar class="fl">
+        <app-spurt-header-menu [categories]="listSandBox.categoryList$ | async" class="head"></app-spurt-header-menu>
+    </mat-toolbar>
+    <app-menu [categories]="listSandBox.categoryList$ | async"></app-menu>
+</mat-sidenav-container>
+<app-options></app-options>
+<app-footer></app-footer>
+<div *ngIf="showBackToTop" fxLayout="row" fxLayoutAlign="center center" class="back-to-top transition"
+    (click)="scrollToTop()">
+    <mat-icon>arrow_upward</mat-icon>
+</div>

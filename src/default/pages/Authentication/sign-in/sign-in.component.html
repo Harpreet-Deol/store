@@ -1,0 +1,49 @@
+<div fxFlex="100" class="p-2 bshadow">
+    <h2 class="text-muted text-center">Sign In</h2>
+    <form [formGroup]="loginForm" novalidate>
+        <mat-form-field     class="w-100 mt-2" [ngClass]="{'validationcolor':
+    (loginForm.controls.email.hasError('required') && submitted)}">
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="loginForm.controls['email'].hasError('required') && submitted">
+                Email is required
+            </mat-error>
+            <mat-error *ngIf="loginForm.controls['email'].hasError('invalidEmail') && submitted">
+                Invalid email address
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-100 mt-1" [ngClass]="{'validationcolor':
+    (loginForm.controls.password.hasError('required') && submitted)}">
+            <input matInput placeholder="Password" formControlName="password" [type]="hide ? 'password' : 'text'" >
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="loginForm.controls['password'].hasError('required') && submitted">
+                Password is required
+            </mat-error>
+            <mat-error *ngIf="loginForm.controls['password'].hasError('minlength') && submitted">
+                Password isn't long enough, minimum of 5 characters
+            </mat-error>
+        </mat-form-field>
+        <div class="text-center mt-2">
+            <button mat-button class="mat-elevation-z6 boton" (click)="onLoginFormSubmit(loginForm.value)">
+                <i *ngIf="(authSandbox.loginLoading$ | async)" class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+
+                Login
+                <!-- <mat-icon *ngIf="!(authSandbox.loginLoading$ | async)">exit_to_app</mat-icon> -->
+            </button>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="mt-2">
+            <div class="w-50"></div>
+            <h5 class="text-muted mp" routerLink="/auth/forgot">
+                Forgot Password?</h5>
+            <div class="divider w-40"></div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="mt-2">
+            <div class="divider w-100"></div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="mt-2">
+            <div class="w-50"></div>
+            <h5 class="text-muted mp" routerLink="/auth/sign-up"> New User? Sign Up here</h5>
+            <div class="divider w-40"></div>
+        </div>
+    </form>
+</div>

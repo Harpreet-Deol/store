@@ -1,0 +1,97 @@
+<!-- <mat-toolbar class="top-navbar" fxLayoutAlign="" color="primary">
+    <a mat-button [routerLink]="['/']" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}"> <img src="assets/images/home.png"> </a>
+    <a mat-button (click)="sendUniqueId('productFilter')" [routerLink]="['/products/', 'All']" class="colorMenu" routerLinkActive="colorMenu" [routerLinkActiveOptions]="{exact:true}">
+        All Products
+    </a>
+    <div *ngFor="let category of categories;let i=index">
+        <a mat-button class="colorMenu" routerLinkActive="horizontal-active-link" *ngIf="i < 8" [routerLink]="['/products', category.categoryId]" [routerLinkActiveOptions]="{exact:true}" (click)="indexData(i,category.categoryId)">{{category.name}}
+        </a>
+    </div>
+    <a mat-button routerLink="/contact" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Contact</a>
+</mat-toolbar> -->
+
+
+<!-- Large Screen Menu -->
+
+<mat-toolbar color="primary" class="lh">
+  <div fxShow="true" fxHide.gt-sm="true" fxLayout="row" class="nm ">
+    <div>
+      <button mat-icon-button class="np" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div style="width:100%; padding-right: 0;">
+      <form method="get" class="example-form" fxLayout="row">
+        <mat-icon class="hamburger-search-icon">search</mat-icon>
+        <input matInput class="hamburger-search" (keyup)="searchData($event.target.value)" #searchText name="searchText"
+          placeholder="Search Noor Fashion">
+        <mat-icon class="hamburger-search-clear-icon"
+          [style.color]="(searchText.value && searchText.value.trim().length) ? '#777474' : 'white'"
+          (click)="searchText.value=''">close</mat-icon>
+      </form>
+    </div>
+  </div>
+  <div fxShow="true" class="justify-contents-between" fxHide.lt-md="true" fxLayout="row">
+    <div>
+      <a mat-button class="lh_fcm" routerLinkActive="horizontal-active-link" (click)="toggle(sidenav)" [routerLink]="['/']"
+        [routerLinkActiveOptions]="{exact:true}">
+        Home
+        <!-- sendUniqueId('productFilter'); removed from (click) event-->
+      </a>
+    </div>
+    <div>
+      <a mat-button class="lh_fcm" routerLinkActive="horizontal-active-link" (click)="toggle(sidenav)"
+        [routerLink]="['/products/', 'All']" [routerLinkActiveOptions]="{exact:true}">
+        All Products
+        <!-- sendUniqueId('productFilter'); removed from (click) event-->
+      </a>
+
+    </div>
+    <div *ngFor="let category of categories;let i=index">
+      <a mat-button class="lh_fcm" routerLinkActive="horizontal-active-link" *ngIf="i < 8"
+        [routerLink]="['/products', category.categoryId]" [routerLinkActiveOptions]="{exact:true}"
+        (click)="indexData(i,category.categoryId); $event.stopPropagation()">{{category.name}}
+      </a>
+    </div>
+    <div>
+      <a mat-button class="lh_fcm" routerLinkActive="horizontal-active-link" routerLink="/contact"
+        [routerLinkActiveOptions]="{exact:true}">Contact</a>
+    </div>
+  </div>
+</mat-toolbar>
+
+<!-- Side-Navigation Hamburger -->
+<mat-sidenav-container fxFlexFill>
+  <mat-sidenav #sidenav color="primary" fxLayout="column" mode="over" opened="false"
+    (close)="alert('hello'); setSideNavFlag('close')" fxHide.gt-sm="true">
+    <div>
+      <a mat-button  class="colorMenu lh la" (click)="toggle(sidenav); $event.stopPropagation()"
+        routerLinkActive="horizontal-active-link" [routerLink]="['/products/', 'All']"
+        [routerLinkActiveOptions]="{exact:true}">
+        All Products
+        <!-- sendUniqueId('productFilter'); removed from (click) event-->
+      </a>
+    </div>
+
+    <div *ngFor="let category of categories;let i=index">
+      <div class="divider w-40 dividerColor"></div>
+      <a mat-button class="colorMenu lh" (click)="toggle(sidenav); $event.stopPropagation()"
+        routerLinkActive="horizontal-active-link" *ngIf="i < 8" [routerLink]="['/products', category.categoryId]"
+        [routerLinkActiveOptions]="{exact:true}" (click)="indexData(i,category.categoryId);">{{category.name}}
+      </a>
+    </div>
+    <div class="divider w-40 dividerColor"></div>
+    <div>
+      <a mat-button class="colorMenu lh" (click)="toggle(sidenav); $event.stopPropagation()"
+        routerLinkActive="horizontal-active-link" routerLink="/contact"
+        [routerLinkActiveOptions]="{exact:true}">Contact</a>
+      <!-- sendUniqueId('productFilter'); removed from (click) event-->
+    </div>
+    <div class="divider w-40 dividerColor"></div>
+  </mat-sidenav>
+
+  <div class="theme-container main">
+    <app-breadcrumb></app-breadcrumb>
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

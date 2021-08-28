@@ -1,0 +1,25 @@
+<div fxFlex="100" class="p-2 bshadow">
+    <h2 class="text-muted text-center">
+        Forgot Password</h2>
+    <form [formGroup]="forgotForm" novalidate>
+        <mat-form-field class="w-100 mt-2" [ngClass]="{'validationcolor':
+    (forgotForm.controls.emailId.hasError('required') && submitted)}">
+            <input matInput placeholder="Email" formControlName="emailId" required>
+            <mat-error *ngIf="forgotForm.controls['emailId'].hasError('required') && submitted">Email is required
+            </mat-error>
+            <mat-error *ngIf="forgotForm.controls['emailId'].hasError('invalidEmail') && submitted">Invalid email
+                address</mat-error>
+        </mat-form-field>
+        <div class="text-center mt-2">
+            <button mat-button class="mat-elevation-z6 boton" (click)="onForgotFormSubmit(forgotForm.value)">
+                Continue
+                <!-- <mat-icon>exit_to_app</mat-icon> -->
+            </button>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="mt-2">
+            <div class="divider w-100"></div>
+            <h4 class="text-muted auth forgot" routerLink="/auth/sign-in">Back to Login</h4>
+            <div class="divider w-100"></div>
+        </div>
+    </form>
+</div>
