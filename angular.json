@@ -38,7 +38,7 @@
                     "options": {
                         "outputPath": "dist/store",
                         "index": "src/index.html",
-                        "main": "src/main.ts",
+                        "main": "src/main.ts",ng build
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "src/tsconfig.app.json",
                         "assets": [
